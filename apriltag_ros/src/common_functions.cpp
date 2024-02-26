@@ -575,26 +575,30 @@ void TagDetector::drawDetections (cv_bridge::CvImagePtr image)
     // colors!
     line(image->image, cv::Point((int)det->p[0][0], (int)det->p[0][1]),
          cv::Point((int)det->p[1][0], (int)det->p[1][1]),
-         cv::Scalar(0, 0xff, 0)); // green
+         cv::Scalar(0, 0xff, 0),
+         5); // green
     line(image->image, cv::Point((int)det->p[0][0], (int)det->p[0][1]),
          cv::Point((int)det->p[3][0], (int)det->p[3][1]),
-         cv::Scalar(0, 0, 0xff)); // red
+         cv::Scalar(0, 0, 0xff),
+         5); // red
     line(image->image, cv::Point((int)det->p[1][0], (int)det->p[1][1]),
          cv::Point((int)det->p[2][0], (int)det->p[2][1]),
-         cv::Scalar(0xff, 0, 0)); // blue
+         cv::Scalar(0xff, 0, 0),
+         5); // blue
     line(image->image, cv::Point((int)det->p[2][0], (int)det->p[2][1]),
          cv::Point((int)det->p[3][0], (int)det->p[3][1]),
-         cv::Scalar(0xff, 0, 0)); // blue
+         cv::Scalar(0xff, 0, 0),
+         5); // blue
 
     // Print tag ID in the middle of the tag
     std::stringstream ss;
     ss << det->id;
-    cv::String text = ss.str();
+    cv::String text = ss.str(); 
     int fontface = cv::FONT_HERSHEY_SCRIPT_SIMPLEX;
-    double fontscale = 0.5;
+    double fontscale = 2;
     int baseline;
     cv::Size textsize = cv::getTextSize(text, fontface,
-                                        fontscale, 2, &baseline);
+                                        fontscale, 8, &baseline);
     cv::putText(image->image, text,
                 cv::Point((int)(det->c[0]-textsize.width/2),
                           (int)(det->c[1]+textsize.height/2)),
