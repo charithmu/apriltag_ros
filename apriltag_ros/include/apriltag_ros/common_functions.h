@@ -180,6 +180,7 @@ class TagDetector
 
   // Other members
   std::map<int, StandaloneTagDescription> standalone_tag_descriptions_;
+  std::map<int, StandaloneTagDescription> standalone_bulk_tag_descriptions_;
   std::vector<TagBundleDescription > tag_bundle_descriptions_;
   bool remove_duplicates_;
   bool run_quietly_;
@@ -194,6 +195,8 @@ class TagDetector
   // Store standalone and bundle tag descriptions
   std::map<int, StandaloneTagDescription> parseStandaloneTags(
       XmlRpc::XmlRpcValue& standalone_tag_descriptions);
+  std::map<int, StandaloneTagDescription> parseBulkTags(
+      XmlRpc::XmlRpcValue &standalone_tags);
   std::vector<TagBundleDescription > parseTagBundles(
       XmlRpc::XmlRpcValue& tag_bundles);
   double xmlRpcGetDouble(
